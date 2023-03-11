@@ -1,0 +1,19 @@
+.button {
+    background-color: #af784c; /* Green */
+    border: none;
+    color: white;
+    padding: 1rem 3rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px;
+    width: 15%;
+    margin: 0.3rem;
+
+  }
+
+  .button:hover,
+  .button:active {
+    background-color: #8d623e;
+  }

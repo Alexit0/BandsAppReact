@@ -1,0 +1,47 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+    background: #242424e1;
+  }
+  
+  .modal {
+    position: fixed;
+    top: 30vh;
+    left: 10%;
+    /* width: 40%; */
+    z-index: 100;
+    overflow: hidden;
+    /* background-color: var(--color-gray-300); */
+    background-color: #271b1be1;
+    border-radius: 12px;
+    text-align: center;
+    list-style-type:none;
+  }
+  
+  
+  .header h1 {
+    margin: 0;
+    /* color: var(--color-gray-900); */
+    color: #2e2222e1;
+  }
+  
+  .content {
+    padding: 1rem;
+  }
+  
+  .actions {
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  @media (min-width: 768px) {
+    .modal {
+      left: calc(50% - 20rem);
+      width: 40rem;
+    }
+  }

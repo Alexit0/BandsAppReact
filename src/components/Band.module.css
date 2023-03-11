@@ -1,0 +1,39 @@
+.band {
+    margin: 0px 5px 5px;
+    padding: 0.1rem;
+    background-color: #4d1601;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    border-radius: 12px;
+    color: white;
+    align-items: center;
+    text-align: center;
+    width: 50vh;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .band button {
+    cursor: pointer;
+    font: inherit;
+    border: none;
+    background-color: #4d1601;
+    color: white;
+    padding: 0.75rem 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-weight: bold;
+    width: 100%;
+  }
+  /* .band h2 {
+    font-size: 2rem;
+    color: #f7e702;
+  }
+  
+  .band h3 {
+    color: #eccf77;
+    margin: 0;
+    font-size: 1rem;
+  } */
+  
