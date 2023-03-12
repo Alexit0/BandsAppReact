@@ -7,7 +7,9 @@ import ErrorPage from "./pages/Error";
 import EditBandPage from "./pages/EditBand";
 import NewBandPage, { action as newBandAction } from "./pages/NewBand";
 import BandsRootLayout from "./pages/BandsRoot";
-import AuthenticationPage from "./pages/Authentication";
+import AuthenticationPage, {
+  action as authAction,
+} from "./pages/Authentication";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +22,7 @@ const router = createBrowserRouter([
         element: <HomePage />,
         loader: bandsLoader,
       },
-      { path: "auth", element: <AuthenticationPage /> },
+      { path: "auth", element: <AuthenticationPage />, action: authAction },
       {
         path: "band",
         element: <BandsRootLayout />,

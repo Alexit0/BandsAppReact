@@ -15,7 +15,15 @@ function BandForm() {
       </p>
       <p>
         <label htmlFor="year_formed">Year Formed</label>
-        <input id="year_formed" type="text" name="year_formed" required />
+        <input
+          id="year_formed"
+          type="number"
+          min="1900"
+          max="2099"
+          step="1"
+          name="year_formed"
+          required
+        />
       </p>
       <p>
         <label htmlFor="country_of_origin">Country of Origin</label>
