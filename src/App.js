@@ -11,12 +11,15 @@ import AuthenticationPage, {
   action as authAction,
 } from "./pages/Authentication";
 import { action as logoutAction } from "./pages/Logout";
+import { tokenLoader } from "./util/auth";
 
 const router = createBrowserRouter([
   {
+    id: "root",
     path: "/",
     element: <RootLayout />,
     errorElement: <ErrorPage />,
+    loader: tokenLoader,
     children: [
       { path: "auth", element: <AuthenticationPage />, action: authAction },
       {
@@ -28,14 +31,15 @@ const router = createBrowserRouter([
         path: "band",
         element: <BandsRootLayout />,
         children: [
+          ,
           {
+            id: "band-details",
             path: ":bandName",
-            element: <BandPage />,
             loader: bandDetailsLoader,
-            children: [],
+            element: <BandPage />,
           },
-          { path: ":bandName/edit", element: <EditBandPage /> },
           { path: "new", element: <NewBandPage />, action: newBandAction },
+          { path: ":bandName/edit", element: <EditBandPage /> },
         ],
       },
       { path: "logout", action: logoutAction },

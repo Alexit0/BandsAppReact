@@ -18,7 +18,7 @@ const BandsNavigation = () => {
               Edit Band
             </NavLink>
           </li>
-          {/* <li>
+          <li>
             <NavLink
               to="new"
               className={({ isActive }) =>
@@ -27,7 +27,7 @@ const BandsNavigation = () => {
             >
               Add New Band
             </NavLink>
-          </li> */}
+          </li>
         </ul>
       </nav>
     </header>
