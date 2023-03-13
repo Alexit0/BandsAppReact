@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Form, NavLink } from "react-router-dom";
 
 import classes from "./MainNavigation.module.css";
 
@@ -19,6 +19,16 @@ const MainNavigation = () => {
           </li>
           <li>
             <NavLink
+              to="/band/new"
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }
+            >
+              Add Band
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
               to="auth?mode=login"
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
@@ -26,6 +36,11 @@ const MainNavigation = () => {
             >
               Login
             </NavLink>
+          </li>
+          <li>
+            <Form action="/logout" method="post">
+              <button>Logout</button>
+            </Form>
           </li>
         </ul>
       </nav>

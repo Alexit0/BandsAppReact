@@ -18,7 +18,7 @@ const ErrorPage = () => {
 
   return (
     <>
-      <MainNavigation />
+      {/* <MainNavigation /> */}
       <main>
         <h1>{title}</h1>
         <p>{message}</p>

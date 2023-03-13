@@ -1,5 +1,6 @@
 import { json, Link, redirect } from "react-router-dom";
 import BandForm from "../components/BandForm";
+import { getAuthToken } from "../util/auth";
 
 const NewBandPage = () => {
   return (
@@ -17,8 +18,7 @@ export default NewBandPage;
 
 export async function action({ request, params }) {
   const data = await request.formData();
-  console.log(data)
-
+  console.log(data);
 
   const enteredData = {
     name: data.get("name"),
@@ -26,15 +26,17 @@ export async function action({ request, params }) {
     country_of_origin: data.get("country_of_origin"),
   };
 
+  const token = getAuthToken();
   const response = await fetch("http://localhost:5000/band/new", {
     method: "POST",
     headers: {
       "Content-type": "application/json",
+      Authorization: "Bearer " + token,
     },
     body: JSON.stringify(enteredData),
   });
 
-  console.log(response)
+  console.log(response);
 
   if (!response.ok) {
     console.log("could not save event");

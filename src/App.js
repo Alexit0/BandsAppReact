@@ -10,6 +10,7 @@ import BandsRootLayout from "./pages/BandsRoot";
 import AuthenticationPage, {
   action as authAction,
 } from "./pages/Authentication";
+import { action as logoutAction } from "./pages/Logout";
 
 const router = createBrowserRouter([
   {
@@ -17,12 +18,12 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
+      { path: "auth", element: <AuthenticationPage />, action: authAction },
       {
         index: true,
         element: <HomePage />,
         loader: bandsLoader,
       },
-      { path: "auth", element: <AuthenticationPage />, action: authAction },
       {
         path: "band",
         element: <BandsRootLayout />,
@@ -31,11 +32,13 @@ const router = createBrowserRouter([
             path: ":bandName",
             element: <BandPage />,
             loader: bandDetailsLoader,
+            children: [],
           },
           { path: ":bandName/edit", element: <EditBandPage /> },
           { path: "new", element: <NewBandPage />, action: newBandAction },
         ],
       },
+      { path: "logout", action: logoutAction },
     ],
   },
 ]);
