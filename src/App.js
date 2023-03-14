@@ -11,7 +11,8 @@ import AuthenticationPage, {
   action as authAction,
 } from "./pages/Authentication";
 import { action as logoutAction } from "./pages/Logout";
-import { tokenLoader } from "./util/auth";
+import { checkAuthLoader, tokenLoader } from "./util/auth";
+import AboutPage from "./pages/About";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
     loader: tokenLoader,
     children: [
       { path: "auth", element: <AuthenticationPage />, action: authAction },
+      { path: "about", element: <AboutPage /> },
       {
         index: true,
         element: <HomePage />,
@@ -31,14 +33,18 @@ const router = createBrowserRouter([
         path: "band",
         element: <BandsRootLayout />,
         children: [
-          ,
           {
             id: "band-details",
             path: ":bandName",
             loader: bandDetailsLoader,
             element: <BandPage />,
           },
-          { path: "new", element: <NewBandPage />, action: newBandAction },
+          {
+            path: "new",
+            element: <NewBandPage />,
+            action: newBandAction,
+            loader: checkAuthLoader,
+          },
           { path: ":bandName/edit", element: <EditBandPage /> },
         ],
       },

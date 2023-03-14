@@ -9,6 +9,17 @@ const MainNavigation = () => {
     <header className={classes.header}>
       <nav>
         <ul className={classes.list}>
+          {" "}
+          <li>
+            <NavLink
+              to="about"
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }
+            >
+              About
+            </NavLink>
+          </li>
           <li>
             <NavLink
               to="/"
@@ -31,7 +42,6 @@ const MainNavigation = () => {
               </NavLink>
             </li>
           )}
-
           {!token && (
             <li>
               <NavLink

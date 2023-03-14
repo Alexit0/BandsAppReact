@@ -4,15 +4,20 @@
 }
 
 .form label,
-.form input {
+.form input,
+.form select {
   display: block;
   width: 100%;
+  height: 35px;
 }
 
 .form input,
-.form textarea {
+.form textarea,
+.form select,
+.form select option {
   font: inherit;
   padding: 0.25rem;
+  text-align: center;
 }
 
 .actions {
