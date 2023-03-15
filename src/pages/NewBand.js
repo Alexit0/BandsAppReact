@@ -18,7 +18,7 @@ export default NewBandPage;
 
 export async function action({ request, params }) {
   const data = await request.formData();
-  console.log(data);
+  console.log('DATA', data);
 
   const enteredData = {
     name: data.get("name"),

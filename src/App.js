@@ -13,6 +13,7 @@ import AuthenticationPage, {
 import { action as logoutAction } from "./pages/Logout";
 import { checkAuthLoader, tokenLoader } from "./util/auth";
 import AboutPage from "./pages/About";
+import MusiciansPage, { loader as musiciansLoader } from "./pages/Musicians";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,11 @@ const router = createBrowserRouter([
           },
           { path: ":bandName/edit", element: <EditBandPage /> },
         ],
+      },
+      {
+        path: "musicians",
+        element: <MusiciansPage />,
+        loader: musiciansLoader,
       },
       { path: "logout", action: logoutAction },
     ],

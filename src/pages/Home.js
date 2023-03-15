@@ -19,7 +19,7 @@ export async function loader() {
   if (!response.ok) {
     throw json(
       {
-        message: "Couldn not fetch bands.",
+        message: "Couldn not fetch bands from database.",
       },
       { status: 500 }
     );

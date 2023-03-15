@@ -68,10 +68,25 @@ function BandForm() {
               .sort((a, b) => a.name.common.localeCompare(b.name.common))
               .map((country) => {
                 return (
-                  <option key={country.cca2}>{country.name.common}</option>
+                  <option
+                    key={country.cca2}
+                    value={country.cca2}
+                  >{`${country.name.common}, (${country.cca2})`}</option>
                 );
               })}
         </select>
+        <p>-</p>
+        <div>
+          <label htmlFor="country_of_origin">Add Musician</label>
+          <select id="country_of_origin" type="text" name="country_of_origin">
+            <option>--- Select Musician ---</option>
+          </select>
+          <br/>
+          <label htmlFor="country_of_origin">Choose Musician</label>
+          <select id="country_of_origin" type="text" name="country_of_origin">
+            <option>--- Select Instrument ---</option>
+          </select>
+        </div>
       </p>
       <div className={classes.actions}>
         <button type="button" onClick={cancelHandler}>

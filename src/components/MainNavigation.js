@@ -29,6 +29,16 @@ const MainNavigation = () => {
             >
               Home
             </NavLink>
+          </li>{" "}
+          <li>
+            <NavLink
+              to="musicians"
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }
+            >
+              Musicians
+            </NavLink>
           </li>
           {token && (
             <li>
