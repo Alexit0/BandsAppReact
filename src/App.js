@@ -14,6 +14,14 @@ import { action as logoutAction } from "./pages/Logout";
 import { checkAuthLoader, tokenLoader } from "./util/auth";
 import AboutPage from "./pages/About";
 import MusiciansPage, { loader as musiciansLoader } from "./pages/Musicians";
+import MusicianPage, {
+  loader as musicianDetailLoader,
+  action as deleteAction,
+} from "./pages/Musician";
+import MusiciansRootLayout from "./pages/MusiciansRoot";
+import EditMusicianPage from "./pages/EditMusician";
+import NewMusicianPage from "./pages/NewMusician";
+import { action as manipulateMusicianAction } from "./components/MusicianForm";
 
 const router = createBrowserRouter([
   {
@@ -51,9 +59,39 @@ const router = createBrowserRouter([
       },
       {
         path: "musicians",
-        element: <MusiciansPage />,
-        loader: musiciansLoader,
+        children: [
+          {
+            path: "",
+            element: <MusiciansPage />,
+            loader: musiciansLoader,
+          },
+          {
+            id: "musician-details",
+            path: ":musicianId",
+            element: <MusiciansRootLayout />,
+            loader: musicianDetailLoader,
+            action: deleteAction,
+            children: [
+              {
+                index: true,
+                element: <MusicianPage />,
+                // action: deleteAction,
+              },
+              {
+                path: "edit",
+                element: <EditMusicianPage />,
+                action: manipulateMusicianAction,
+              },
+            ],
+          },
+          {
+            path: "new",
+            element: <NewMusicianPage />,
+            action: manipulateMusicianAction,
+          },
+        ],
       },
+
       { path: "logout", action: logoutAction },
     ],
   },

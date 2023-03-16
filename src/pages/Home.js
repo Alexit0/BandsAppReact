@@ -5,6 +5,7 @@ export default function HomePage() {
 
   const data = useLoaderData();
   const bands = data.bands;
+  console.log(data)
   return (
     <>
       <h1>BandsApp v2.0</h1>

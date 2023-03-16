@@ -1,5 +1,6 @@
 .button {
-    background-color: #af784c; /* Green */
+    background-color: #af784c;
+    /* Green */
     border: none;
     color: white;
     padding: 0.5rem 1rem;
@@ -11,9 +12,9 @@
     width: 200px;
     margin: 0.3rem;
 
-  }
+}
 
-  .button:hover,
-  .button:active {
+.button:hover,
+button:active {
     background-color: #8d623e;
-  }
+}

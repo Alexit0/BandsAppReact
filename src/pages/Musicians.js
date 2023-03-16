@@ -1,5 +1,7 @@
-import { json, useLoaderData } from "react-router-dom";
+import { json, NavLink, useLoaderData } from "react-router-dom";
 import MusiciansList from "../components/MusiciansList";
+
+import classes from "./Musicians.module.css";
 
 const MusiciansPage = () => {
   const data = useLoaderData();
@@ -7,7 +9,12 @@ const MusiciansPage = () => {
   return (
     <>
       <h1>Musicians list</h1>
-      <MusiciansList musicians={musicians}/>
+      <header className={classes.header}>
+        <NavLink className={classes.a} to="/musicians/new">
+          Add Musician
+        </NavLink>
+      </header>
+      <MusiciansList musicians={musicians} />
     </>
   );
 };
