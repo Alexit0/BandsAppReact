@@ -3,6 +3,7 @@ import MusicianButton from "./UI/MusicianButton";
 const MusiciansList = ({ musicians }) => {
   return (
     <div>
+      <h2>Musicians list</h2>
       <ul>
         {musicians
           .sort((a, b) => a.last_name.localeCompare(b.last_name))

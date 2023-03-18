@@ -1,10 +1,12 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useRouteLoaderData } from "react-router-dom";
 import MusicianNavigation from "../components/MusicianNavigation";
 
 const MusiciansRootLayout = () => {
+  const token = useRouteLoaderData("root");
+
   return (
     <>
-      <MusicianNavigation />
+      {token && <MusicianNavigation />}
       <Outlet />
     </>
   );

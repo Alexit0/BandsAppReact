@@ -1,19 +1,28 @@
-import { json, NavLink, useLoaderData } from "react-router-dom";
+import {
+  json,
+  NavLink,
+  useLoaderData,
+  useRouteLoaderData,
+} from "react-router-dom";
 import MusiciansList from "../components/MusiciansList";
 
-import classes from "./Musicians.module.css";
+import classes from "./pages.module.css";
 
 const MusiciansPage = () => {
+  const token = useRouteLoaderData("root");
+
   const data = useLoaderData();
   const musicians = data.musicians;
   return (
     <>
-      <h1>Musicians list</h1>
-      <header className={classes.header}>
-        <NavLink className={classes.a} to="/musicians/new">
-          Add Musician
-        </NavLink>
-      </header>
+      <h1>BandsApp v2.0</h1>
+      {token && (
+        <header className={classes.header}>
+          <NavLink className={classes.a} to="/musicians/new">
+            Add Musician
+          </NavLink>
+        </header>
+      )}
       <MusiciansList musicians={musicians} />
     </>
   );

@@ -52,6 +52,18 @@ const MainNavigation = () => {
               </NavLink>
             </li>
           )}
+                    {token && (
+            <li>
+              <NavLink
+                to="/musicians/new"
+                className={({ isActive }) =>
+                  isActive ? classes.active : undefined
+                }
+              >
+                Add Musician
+              </NavLink>
+            </li>
+          )}
           {!token && (
             <li>
               <NavLink

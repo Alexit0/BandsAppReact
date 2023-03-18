@@ -1,12 +1,13 @@
-import { useNavigate, Form, json, redirect } from "react-router-dom";
+import { useNavigate, Form } from "react-router-dom";
 
-import classes from "./MusicianForm.module.css";
+import classes from "./Form.module.css";
 
 const MusicianForm = ({ musicianInfo, method }) => {
   const navigate = useNavigate();
   function cancelHandler() {
     navigate("..");
   }
+  console.log('musicianInfo => ', musicianInfo)
   return (
     <Form method={method} className={classes.form}>
       <p>
@@ -53,38 +54,3 @@ const MusicianForm = ({ musicianInfo, method }) => {
 };
 
 export default MusicianForm;
-
-export async function action({ request, params }) {
-  const musicianId = params.musicianId;
-  console.log(musicianId);
-
-  const method = request.method;
-  console.log(toString(method));
-  const data = await request.formData();
-  const musicianData = {
-    name: data.get("first_name"),
-    surname: data.get("last_name"),
-    yob: data.get("yob"),
-  };
-  console.log(musicianData);
-
-  let url = "http://localhost:5000/musicians";
-
-  if (method === "PATCH") {
-    url = "http://localhost:5000/musicians/" + musicianId;
-  }
-
-  const response = await fetch(url, {
-    method: method,
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(musicianData),
-  });
-  console.log(response)
-
-  if (!response) {
-    throw json({ message: "Counld not save event" }, { status: 500 });
-  }
-  return redirect("..");
-}

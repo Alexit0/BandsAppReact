@@ -1,11 +1,11 @@
-import classes from "./BandForm.module.css";
+import classes from "./Form.module.css";
 import { Form, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-function BandForm() {
+function BandForm({ method, selectedBand }) {
   const navigate = useNavigate();
   function cancelHandler() {
-    navigate("/");
+    navigate("..");
   }
   const [countryState, setCountryState] = useState({
     countries: [],
@@ -39,13 +39,18 @@ function BandForm() {
   }, []);
 
   const { countries } = countryState;
-  console.log("countries", typeof countries, countries);
 
   return (
-    <Form method="post" className={classes.form}>
+    <Form method={method} className={classes.form}>
       <p>
         <label htmlFor="name">Band Name</label>
-        <input id="name" type="text" name="name" required />
+        <input
+          id="name"
+          type="text"
+          name="name"
+          required
+          defaultValue={selectedBand ? selectedBand.name : ""}
+        />
       </p>
       <p>
         <label htmlFor="year_formed">Year Formed</label>
@@ -57,37 +62,29 @@ function BandForm() {
           step="1"
           name="year_formed"
           required
+          defaultValue={selectedBand ? selectedBand.year_formed : ""}
+
         />
       </p>
-      <p>
-        <label htmlFor="country_of_origin">Country of Origin</label>
-        <select id="country_of_origin" type="text" name="country_of_origin">
-          <option>--- Select Country ---</option>
-          {countries &&
-            countries
-              .sort((a, b) => a.name.common.localeCompare(b.name.common))
-              .map((country) => {
-                return (
-                  <option
-                    key={country.cca2}
-                    value={country.cca2}
-                  >{`${country.name.common}, (${country.cca2})`}</option>
-                );
-              })}
-        </select>
-        <p>-</p>
-        <div>
-          <label htmlFor="country_of_origin">Add Musician</label>
-          <select id="country_of_origin" type="text" name="country_of_origin">
-            <option>--- Select Musician ---</option>
-          </select>
-          <br/>
-          <label htmlFor="country_of_origin">Choose Musician</label>
-          <select id="country_of_origin" type="text" name="country_of_origin">
-            <option>--- Select Instrument ---</option>
-          </select>
-        </div>
-      </p>
+      <label htmlFor="country_of_origin">Country of Origin</label>
+      <select id="country_of_origin" type="text" name="country_of_origin">
+        <option>
+          {selectedBand
+            ? selectedBand.country_of_origin
+            : "--- Select Country ---"}
+        </option>
+        {countries &&
+          countries
+            .sort((a, b) => a.name.common.localeCompare(b.name.common))
+            .map((country) => {
+              return (
+                <option
+                  key={country.cca2}
+                  value={country.cca2}
+                >{`${country.name.common}, (${country.cca2})`}</option>
+              );
+            })}
+      </select>
       <div className={classes.actions}>
         <button type="button" onClick={cancelHandler}>
           Cancel

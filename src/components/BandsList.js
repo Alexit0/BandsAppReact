@@ -5,6 +5,7 @@ import Modal from "./UI/Modal/Modal";
 
 const BandsList = ({ bands }) => {
   const [selectedBand, setSelectedBand] = useState([]);
+  
   return (
     <div>
       {selectedBand.length > 0 && (
@@ -17,6 +18,7 @@ const BandsList = ({ bands }) => {
             <Button
               setBand={setSelectedBand}
               key={band.id}
+              id={band.id}
               name={band.name}
               year={band.year_formed}
               country={band.country_of_origin}

@@ -1,17 +1,18 @@
 import { NavLink, useParams, useSubmit } from "react-router-dom";
 import classes from "./SecondaryNavigation.module.css";
 
-const MusicianNavigation = () => {
+const BandNavigation = () => {
   const params = useParams();
   const submit = useSubmit();
+  
 
-  const musicianId = params.musicianId;
+  const bandId = params.bandId;
 
   function startDeleteHandler() {
     const proceed = window.confirm("Are you sure?");
 
     if (proceed) {
-      submit(null, { method: "delete" });
+      submit(null, { method: "delete"});
     }
   }
 
@@ -21,19 +22,17 @@ const MusicianNavigation = () => {
         <ul className={classes.list}>
           <li>
             <NavLink
-              to={`/musicians/${musicianId}/edit`}
+              to={`/band/${bandId}/edit`}
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }
               end
             >
-              Edit Musician
+              Edit Band
             </NavLink>
           </li>
           <li>
-            <button type="submit" onClick={startDeleteHandler}>
-              Delete Musician
-            </button>
+            <button onClick={startDeleteHandler}>Delete Band</button>
           </li>
         </ul>
       </nav>
@@ -41,4 +40,4 @@ const MusicianNavigation = () => {
   );
 };
 
-export default MusicianNavigation;
+export default BandNavigation;

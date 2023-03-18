@@ -1,0 +1,43 @@
+.header {
+  padding: 1rem;
+}
+
+.list {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;  
+}
+
+.list a {
+  background-color: var(--color-primary-500);
+  color: var(--color-grey-400);
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  border: none;
+  margin-left: -1rem;  
+}
+
+.list a:hover,
+.list a:active,
+.list a.active {
+  background-color: var(--color-primary-700);
+  ;
+}
+
+.list button {
+  font: inherit;
+  cursor: pointer;
+  padding: 0.54rem 1.2rem;
+  border-radius: 4px;
+  background-color: var(--color-gray-300);
+  color: var(--color-gray-800);
+  border: none;
+  margin: -1rem;
+}
+
+.list button:hover {
+  background-color: var(--color-primary-400);
+}
+
+
