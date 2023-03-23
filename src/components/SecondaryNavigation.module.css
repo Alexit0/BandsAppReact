@@ -21,7 +21,7 @@
 .list a:hover,
 .list a:active,
 .list a.active {
-  background-color: var(--color-primary-700);
+  background-color: var(--color-primary-600);
   ;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .list button:hover {
-  background-color: var(--color-primary-400);
+  background-color: var(--color-gray-400);
 }
 
 

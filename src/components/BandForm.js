@@ -16,20 +16,22 @@ function BandForm({ method, selectedBand }) {
   useEffect(() => {
     async function fetchData() {
       try {
+        // fetch spinner
         setCountryState({ loading: true });
 
+        // fetch data
         const response = await fetch("https://restcountries.com/v3.1/all");
         const countries = await response.json();
-
         setCountryState((countryState) => ({
           ...countryState,
           countries,
-          loading: true,
+          loading: false,
         }));
+        
       } catch (err) {
         setCountryState((countryState) => ({
           ...countryState,
-          loading: false,
+          loading: true,
           errorMessage: "Something went wrong",
         }));
       }
@@ -63,28 +65,32 @@ function BandForm({ method, selectedBand }) {
           name="year_formed"
           required
           defaultValue={selectedBand ? selectedBand.year_formed : ""}
-
         />
       </p>
-      <label htmlFor="country_of_origin">Country of Origin</label>
-      <select id="country_of_origin" type="text" name="country_of_origin">
-        <option>
-          {selectedBand
-            ? selectedBand.country_of_origin
-            : "--- Select Country ---"}
-        </option>
-        {countries &&
-          countries
-            .sort((a, b) => a.name.common.localeCompare(b.name.common))
-            .map((country) => {
-              return (
-                <option
-                  key={country.cca2}
-                  value={country.cca2}
-                >{`${country.name.common}, (${country.cca2})`}</option>
-              );
-            })}
-      </select>
+      {countryState.loading && <p>loading...</p>}
+      {!countryState.loading && (
+        <>
+          <label htmlFor="country_of_origin">Country of Origin</label>
+          <select id="country_of_origin" type="text" name="country_of_origin">
+            <option>
+              {selectedBand
+                ? selectedBand.country_of_origin
+                : "--- Select Country ---"}
+            </option>
+            {countries &&
+              countries
+                .sort((a, b) => a.name.common.localeCompare(b.name.common))
+                .map((country) => {
+                  return (
+                    <option
+                      key={country.cca2}
+                      value={country.cca2}
+                    >{`${country.name.common}, (${country.cca2})`}</option>
+                  );
+                })}
+          </select>{" "}
+        </>
+      )}
       <div className={classes.actions}>
         <button type="button" onClick={cancelHandler}>
           Cancel

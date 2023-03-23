@@ -1,10 +1,12 @@
 import { Link, useParams, useRouteLoaderData } from "react-router-dom";
 import BandsLineup from "../components/BandsLineup";
+import LineupForm from "../components/LineupForm";
 
 export default function BandPage() {
   const params = useParams();
   const basicData = useRouteLoaderData("band-basic-info");
   const data = useRouteLoaderData("band-details");
+  const token = useRouteLoaderData("root");
 
   const bandId = params.bandId;
   const selectedBand = basicData.bands.filter((obj) => obj.id === +bandId);
@@ -14,22 +16,25 @@ export default function BandPage() {
   }
 
   const lineUp = data.map((item) => ({
-    name: getFullName(item),
-    instrument: item.Instrument,
+    musicianId: item.Musician_Id,
+    musicianName: getFullName(item),
+    instrumentId: item.Instrument_Id,
+    instrumentName: item.Instrument,
   }));
 
   const newLineUp = Object.values(
     lineUp.reduce((acc, cur) => {
-      if (!acc[cur.name]) {
-        acc[cur.name] = { ...cur, instrument: [] };
+      if (!acc[cur.musicianName]) {
+        acc[cur.musicianName] = { ...cur, instrumentName: [] };
       }
-      acc[cur.name].instrument.push(cur.instrument);
+      acc[cur.musicianName].instrumentName.push(cur.instrumentName);
       return acc;
     }, {})
   );
 
-  console.log("bandId => ", bandId);
-  console.log("selectedBand => ", selectedBand);
+  // console.log("lineUp => ", lineUp);
+  // console.log("bandId => ", bandId);
+  // console.log("selectedBand => ", selectedBand);
 
   return (
     <>
@@ -38,6 +43,7 @@ export default function BandPage() {
       <h4> Active since {selectedBand[0].year_formed}</h4>
       <p>-</p>
       <BandsLineup lineup={newLineUp} />
+      {token && <LineupForm musiciansList={lineUp} />}
       <p>-</p>
       <Link to="/">back to the Home Page</Link>
     </>

@@ -1,5 +1,3 @@
-
-
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage, { loader as bandsLoader } from "./pages/Home";
@@ -54,7 +52,12 @@ const router = createBrowserRouter([
             element: <BandsRootLayout />,
             children: [
               { index: true, element: <BandPage /> },
-              { path: "edit", element: <EditBandPage />, action: manipulatateBandAction },
+              {
+                path: "edit",
+                element: <EditBandPage />,
+                action: manipulatateBandAction,
+                loader: checkAuthLoader,
+              },
             ],
           },
           {
@@ -71,6 +74,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: "",
+            id: "musicians-page",
             element: <MusiciansPage />,
             loader: musiciansLoader,
           },
@@ -86,6 +90,7 @@ const router = createBrowserRouter([
                 path: "edit",
                 element: <EditMusicianPage />,
                 action: manipulateMusicianAction,
+                loader: checkAuthLoader,
               },
             ],
           },
@@ -93,6 +98,7 @@ const router = createBrowserRouter([
             path: "new",
             element: <NewMusicianPage />,
             action: manipulateMusicianAction,
+            loader: checkAuthLoader,
           },
         ],
       },

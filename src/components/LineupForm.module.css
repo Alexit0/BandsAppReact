@@ -1,0 +1,138 @@
+/* *{
+    border: solid;
+} */
+.main {
+    /* margin: auto; */
+    /* border: solid 3px; */
+}
+
+.div-sections {
+    /* border: solid 4px; */
+    display: flex;
+    justify-content: center;
+    max-width: 440px;
+    margin: auto;
+}
+
+.main button {
+    font: inherit;
+    cursor: pointer;
+    background-color: var(--color-primary-500);
+    color: var(--color-grey-400);
+    padding: 0.42rem;
+    margin: 1rem;
+    border-radius: 4px;
+    border: none;
+}
+
+.main button:hover,
+.main button:active {
+    background-color: var(--color-primary-600);
+}
+
+
+.button {
+    background-color: #af784c;
+    border: none;
+    color: white;
+    padding: 0.7rem 3rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px;
+    width: 200px;
+    margin: 0.3rem;
+}
+
+.button:hover,
+.button:active {
+    background-color: #8d623e;
+}
+
+.section-1 {
+    /* border: solid 1px; */
+    display: block;
+    text-align: left;
+    margin: 2px;
+    width: 75%
+}
+
+.section-2 {
+    /* border: solid 1px; */
+    display: block;
+    text-align: left;
+    margin: 2px;
+}
+
+
+.section-1 input,
+.section-2 input,
+.section-1 select,
+.section-2 select,
+.section-1 select option,
+.section-2 select option {
+    border: none;
+    border-radius: 4px;
+    font: inherit;
+    padding: .18rem;
+    text-align: left;
+    background-color: var(--color-gray-200);
+    min-width: 100%;
+}
+
+.section-1 label,
+.section-2 label {
+    max-width: 100%;
+    font-size: 14px;
+
+}
+
+.section-button {
+    /* border: solid 1px; */
+    font-size: 14px;
+    /* padding: .18rem; */
+    padding-top: 1.4rem;
+    max-width: 30%;
+    margin: 2px;
+}
+
+.section-button button {
+    cursor: pointer;
+    font: inherit;
+    padding: .14rem;
+    margin: auto;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--color-gray-400);
+    color: var(--color-gray-900);
+}
+
+.section-button button:hover,
+.section-button button:active {
+    background-color: var(--color-gray-500);
+}
+
+.action {
+    /* border: solid 1px; */
+    padding: 2rem;
+    display: flex;
+    gap: 4rem;
+    justify-content: center;
+}
+
+.action button {
+    font: inherit;
+    cursor: pointer;
+    padding: 0.54rem 1.2rem;
+    border-radius: 4px;
+    background-color: var(--color-gray-300);
+    color: var(--color-gray-800);
+    border: none;
+    margin: -1rem;
+}
+
+.action button:hover,
+.action button:active {
+    background-color: var(--color-gray-400);
+}

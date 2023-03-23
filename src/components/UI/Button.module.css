@@ -1,8 +1,8 @@
 .button {
-    background-color: #af784c; /* Green */
+    background-color: #af784c;
     border: none;
     color: white;
-    padding: 0.7rem 3rem;
+    padding: 0.7rem;
     text-align: center;
     text-decoration: none;
     display: inline-block;

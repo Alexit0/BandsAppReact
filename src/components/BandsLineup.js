@@ -5,8 +5,8 @@ const BandsLineup = ({ lineup }) => {
         <h3>Lineup:</h3>
         <ul>
           {lineup.map((musician) => (
-            <li key={musician.name + musician.instrument}>
-              {musician.name} - {musician.instrument.join(" / ")}
+            <li key={musician.musicianName + musician.instrumentName}>
+              {musician.musicianName} - {musician.instrumentName.join(" / ")}
             </li>
           ))}
         </ul>
