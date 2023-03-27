@@ -1,11 +1,12 @@
-frontend of BandsApp
+BandsApp.
 
-use any email and password longer than 6 chars to create a user
+THe app where you currently can add musicians and bands to the database and check what musician plays what band after assigning.
+More functionality is coming. 
 
-node v18.15.0
+Use any email and password longer than 6 chars to create a user.
 
-<!-- install dependencies -->
-npm install
+Using node v18.15.0
 
-<!-- run application -->
-npm start
+To install dependencies: npm install
+
+To start application: npm start
