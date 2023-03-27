@@ -1,7 +1,7 @@
 <h1>BandsApp (front-end)</h1> 
 
-THe app where you currently can add musicians and bands to the database and check what musician plays what band after assigning.
-More functionality is coming. 
+<p>The app where you currently can add musicians and bands to the database and check what musician plays what band after assigning.
+More functionality is coming.</p>
 
 Use any email and password longer than 6 chars to create a user.
 
