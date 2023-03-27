@@ -2,7 +2,7 @@ const BandsLineup = ({ lineup }) => {
   return (
     <>
       <main>
-        <h3>Lineup:</h3>
+        {lineup.length > 0 ? <h4>Lineup:</h4> : <h4>Lineup info not available</h4>}
         <ul>
           {lineup.map((musician) => (
             <li key={musician.musicianName + musician.instrumentName}>

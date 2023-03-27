@@ -32,6 +32,10 @@ export async function action({ request, params }) {
 
   console.log(response);
 
+  if (response.status === 422) {
+    return response;
+  }
+
   if (!response.ok) {
     console.log("could not save event");
     throw json({ message: "Could not save event" });

@@ -1,8 +1,9 @@
 import classes from "./Form.module.css";
-import { Form, useNavigate } from "react-router-dom";
+import { Form, useNavigate, useActionData } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function BandForm({ method, selectedBand }) {
+  const data = useActionData();
   const navigate = useNavigate();
   function cancelHandler() {
     navigate("..");
@@ -27,7 +28,6 @@ function BandForm({ method, selectedBand }) {
           countries,
           loading: false,
         }));
-        
       } catch (err) {
         setCountryState((countryState) => ({
           ...countryState,
@@ -44,6 +44,13 @@ function BandForm({ method, selectedBand }) {
 
   return (
     <Form method={method} className={classes.form}>
+      {data && data.errors && (
+        <ul>
+          {Object.values(data.errors).map((err) => (
+            <li key={err}>{err}</li>
+          ))}
+        </ul>
+      )}
       <p>
         <label htmlFor="name">Band Name</label>
         <input
