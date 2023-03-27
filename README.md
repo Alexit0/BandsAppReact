@@ -1,4 +1,4 @@
-<h1>BandsApp</h1>
+<h1>BandsApp</h1> (front-end)
 
 THe app where you currently can add musicians and bands to the database and check what musician plays what band after assigning.
 More functionality is coming. 
