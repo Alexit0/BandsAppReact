@@ -37,8 +37,7 @@ export async function action({ request, params }) {
   }
 
   if (!response.ok) {
-    console.log("could not save event");
-    throw json({ message: "Could not save event" });
+    throw json({ message: "Could not save band" });
   }
 
   return redirect("/");

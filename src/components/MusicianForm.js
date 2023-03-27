@@ -1,15 +1,23 @@
-import { useNavigate, Form } from "react-router-dom";
+import { useNavigate, Form, useActionData } from "react-router-dom";
 
 import classes from "./Form.module.css";
 
 const MusicianForm = ({ musicianInfo, method }) => {
+  const data = useActionData();
   const navigate = useNavigate();
   function cancelHandler() {
     navigate("..");
   }
-  console.log('musicianInfo => ', musicianInfo)
+  console.log("musicianInfo => ", musicianInfo);
   return (
     <Form method={method} className={classes.form}>
+      {data && data.errors && (
+        <ul>
+          {Object.values(data.errors).map((err) => (
+            <li key={err}>{err}</li>
+          ))}
+        </ul>
+      )}
       <p>
         <label htmlFor="first_name">First Name</label>
         <input
@@ -17,7 +25,7 @@ const MusicianForm = ({ musicianInfo, method }) => {
           type="text"
           name="first_name"
           required
-          defaultValue={musicianInfo ? musicianInfo.first_name : ""}
+          defaultValue={musicianInfo ? musicianInfo[0].first_name : ""}
         />
       </p>
       <p>
@@ -27,7 +35,7 @@ const MusicianForm = ({ musicianInfo, method }) => {
           type="text"
           name="last_name"
           required
-          defaultValue={musicianInfo ? musicianInfo.last_name : ""}
+          defaultValue={musicianInfo ? musicianInfo[0].last_name : ""}
         />
       </p>
       <p>
@@ -40,7 +48,7 @@ const MusicianForm = ({ musicianInfo, method }) => {
           step="1"
           name="yob"
           required
-          defaultValue={musicianInfo ? musicianInfo.yob : ""}
+          defaultValue={musicianInfo ? musicianInfo[0].yob : ""}
         />
       </p>
       <div className={classes.actions}>

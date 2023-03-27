@@ -95,7 +95,8 @@ function BandForm({ method, selectedBand }) {
                     >{`${country.name.common}, (${country.cca2})`}</option>
                   );
                 })}
-          </select>{" "}
+                <option>Unknown</option>
+          </select>
         </>
       )}
       <div className={classes.actions}>

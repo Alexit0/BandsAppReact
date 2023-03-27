@@ -1,5 +1,5 @@
-import { useRouteError } from "react-router-dom";
-// import MainNavigation from "../components/MainNavigation";
+import { useRouteError, Link } from "react-router-dom";
+import classes from "../pages/pages.module.css";
 
 const ErrorPage = () => {
   const error = useRouteError();
@@ -8,17 +8,18 @@ const ErrorPage = () => {
   let message = "Something went wrong...";
 
   if (error.status === 500) {
-    message = error.data.message
+    message = error.data.message;
   }
 
   if (error.status === 404) {
-    title = 'Not found!'
-    message = 'Could not find page'
+    title = "Not found!";
+    message = "Could not find page";
   }
 
   return (
-    <> 
-      <main>
+    <>
+      <main className={classes.error}>
+        <Link to="/">Home</Link>
         <h1>{title}</h1>
         <p>{message}</p>
       </main>

@@ -24,3 +24,13 @@
     color: white;
 
 }
+
+.error a {
+    text-decoration: none;
+    color: burlywood;
+}
+
+.error a:hover {
+    color: rgb(224, 203, 175);
+    text-decoration: underline;
+}

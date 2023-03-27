@@ -6,9 +6,9 @@ const MusicianPage = () => {
   return (
     <>
       <h1>Profile</h1>
-      <p>Name: {data.first_name}</p>
-      <p>Surname: {data.last_name}</p>
-      <p>Year of birth: {data.yob}</p>
+      <p>Name: {data[0].first_name}</p>
+      <p>Surname: {data[0].last_name}</p>
+      <p>Year of birth: {data[0].yob}</p>
       <Link to="..">back to the Musicians Page</Link>
     </>
   );

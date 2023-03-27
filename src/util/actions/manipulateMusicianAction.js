@@ -31,8 +31,12 @@ export async function action({ request, params }) {
   });
   console.log(response);
 
+  if (response.status === 422) {
+    return response;
+  }
+
   if (!response) {
-    throw json({ message: "Counld not save event" }, { status: 500 });
+    throw json({ message: "Counld not save musician" }, { status: 500 });
   }
   return redirect("..");
 }
