@@ -6,8 +6,7 @@ const EditBandPage = () => {
   const params = useParams();
   const bandId = params.bandId;
 
-  const data = useRouteLoaderData("band-basic-info");
-  const bands = data.bands;
+  const bands = useRouteLoaderData("band-basic-info");
   console.log('bandId => ', bandId)
   const selectedBand = bands.filter((obj) => (
     obj.id === +bandId

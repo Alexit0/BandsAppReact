@@ -19,7 +19,7 @@ const Modal = (props) => {
         <footer className={classes.actions}>
           <ModalButton buttonName="Close" onClick={onCloseHandler} />
 
-          <NavLink to={`band/${props.content[0]}`}>
+          <NavLink to={`bands/${props.content[0]}`}>
             <ModalButton buttonName="More" />
           </NavLink>
         </footer>

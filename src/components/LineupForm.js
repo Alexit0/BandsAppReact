@@ -16,14 +16,14 @@ const LineupForm = ({ musiciansList }) => {
   const [musicians, setMusicians] = useState([]);
   const [editIsActive, setEditIsActive] = useState(false);
   const [lineUpData, dispatch] = useReducer(lineupReducer, [
-    { musicianId: "", musicianName: "", instrumentId: "", instrumentName: "" },
+    // { musicianId: "", musicianName: "", instrumentId: "", instrumentName: "" },
   ]);
 
   useEffect(() => {
     async function fetchData() {
       const response = await fetch("http://localhost:5000/instruments");
-      const data = await response.json();
-      setInstruments([...data.instruments]);
+      const instruments = await response.json();
+      setInstruments([...instruments]);
     }
     fetchData();
   }, []);
@@ -31,8 +31,8 @@ const LineupForm = ({ musiciansList }) => {
   useEffect(() => {
     async function fetchData() {
       const response = await fetch("http://localhost:5000/musicians");
-      const data = await response.json();
-      setMusicians([...data.musicians]);
+      const musicians = await response.json();
+      setMusicians([...musicians]);
     }
     fetchData();
   }, []);
@@ -78,23 +78,20 @@ const LineupForm = ({ musiciansList }) => {
     const bandId = params.bandId;
     const newData = lineUpData.map(({ musicianId, instrumentId }) => {
       return {
-        band_id: +bandId,
-        musician_id: musicianId,
-        instrument_id: instrumentId,
+        bandId: +bandId,
+        musicianId: +musicianId,
+        instrumentId: +instrumentId,
       };
     });
 
-    const response = await fetch(
-      `http://localhost:5000/band/${params.bandId}/update`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-type": "application/json",
-          Authorization: "Bearer " + token,
-        },
-        body: JSON.stringify(newData),
-      }
-    );
+    await fetch(`http://localhost:5000/lineup/${params.bandId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify(newData),
+    });
     setEditIsActive(false);
     navigateHandler();
   };

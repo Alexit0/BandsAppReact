@@ -19,6 +19,7 @@ export async function action({ request }) {
     email: data.get("email"),
     password: data.get("password"),
   };
+  console.log(authData);
 
   const response = await fetch("http://localhost:5000/" + mode, {
     method: "POST",
@@ -28,7 +29,11 @@ export async function action({ request }) {
     body: JSON.stringify(authData),
   });
 
-  if (response.status === 422 || response.status === 401) {
+  if (
+    response.status === 422 ||
+    response.status === 401 ||
+    response.status === 400
+  ) {
     return response;
   }
 
@@ -37,7 +42,9 @@ export async function action({ request }) {
   }
 
   const resData = await response.json();
-  const token = resData.token;
+  console.log(resData);
+  const token = resData.access_token;
+  console.log("token => ",token)
 
   localStorage.setItem("token", token);
   const exp = new Date();

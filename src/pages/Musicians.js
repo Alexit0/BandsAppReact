@@ -11,8 +11,8 @@ import classes from "./pages.module.css";
 const MusiciansPage = () => {
   const token = useRouteLoaderData("root");
 
-  const data = useLoaderData();
-  const musicians = data.musicians;
+  const musicians = useLoaderData();
+  // const musicians = data.musicians;
   return (
     <>
       <h1>BandsApp v2.0</h1>

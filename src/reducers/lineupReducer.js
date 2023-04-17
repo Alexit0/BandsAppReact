@@ -3,9 +3,9 @@ const lineupReducer = (state, action) => {
     return action.musician.map(
       ({ musicianId, musicianName, instrumentId, instrumentName }) => {
         return {
-          musicianId: musicianId,
+          musicianId: +musicianId,
           musicianName: musicianName,
-          instrumentId: instrumentId,
+          instrumentId: +instrumentId,
           instrumentName: instrumentName,
         };
       }
@@ -40,10 +40,10 @@ const lineupReducer = (state, action) => {
     list[action.payload.index][name] = value;
 
     if (musicianId) {
-      list[action.payload.index].musicianId = musicianId;
+      list[action.payload.index].musicianId = +musicianId;
     }
     if (instrumentId) {
-      list[action.payload.index].instrumentId = instrumentId;
+      list[action.payload.index].instrumentId = +instrumentId;
     }
 
     list[action.payload.index][name] = value;

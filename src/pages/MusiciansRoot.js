@@ -6,7 +6,7 @@ const MusiciansRootLayout = () => {
 
   return (
     <>
-      {token && <MusicianNavigation />}
+      { <MusicianNavigation />}
       <Outlet />
     </>
   );

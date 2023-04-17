@@ -5,20 +5,19 @@ export async function action({ request, params }) {
   const token = getAuthToken();
 
   const bandId = params.bandId;
-  console.log(bandId);
   const method = request.method;
   const data = await request.formData();
 
   const enteredData = {
-    name: data.get("name"),
-    country_of_origin: data.get("country_of_origin"),
-    year_formed: data.get("year_formed"),
+    name: data.get("name").trim(),
+    country_of_origin: data.get("country_of_origin").trim(),
+    year_formed: +data.get("year_formed"),
   };
 
-  let url = "http://localhost:5000/band/new";
+  let url = "http://localhost:5000/bands/";
 
   if (method === "PATCH") {
-    url = "http://localhost:5000/band/" + bandId;
+    url = url + bandId;
   }
 
   const response = await fetch(url, {
@@ -29,8 +28,6 @@ export async function action({ request, params }) {
     },
     body: JSON.stringify(enteredData),
   });
-
-  console.log(response);
 
   if (response.status === 422) {
     return response;

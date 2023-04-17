@@ -25,7 +25,7 @@ const MusicianForm = ({ musicianInfo, method }) => {
           type="text"
           name="first_name"
           required
-          defaultValue={musicianInfo ? musicianInfo[0].first_name : ""}
+          defaultValue={musicianInfo ? musicianInfo.first_name : ""}
         />
       </p>
       <p>
@@ -35,7 +35,7 @@ const MusicianForm = ({ musicianInfo, method }) => {
           type="text"
           name="last_name"
           required
-          defaultValue={musicianInfo ? musicianInfo[0].last_name : ""}
+          defaultValue={musicianInfo ? musicianInfo.last_name : ""}
         />
       </p>
       <p>
@@ -48,7 +48,7 @@ const MusicianForm = ({ musicianInfo, method }) => {
           step="1"
           name="yob"
           required
-          defaultValue={musicianInfo ? musicianInfo[0].yob : ""}
+          defaultValue={musicianInfo ? musicianInfo.yob : ""}
         />
       </p>
       <div className={classes.actions}>

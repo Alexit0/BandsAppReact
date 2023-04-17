@@ -9,16 +9,15 @@ export async function action({ request, params }) {
   const data = await request.formData();
 
   const musicianData = {
-    name: data.get("first_name"),
-    surname: data.get("last_name"),
-    yob: data.get("yob"),
+    first_name: data.get("first_name").trim(),
+    last_name: data.get("last_name").trim(),
+    yob: +data.get("yob"),
   };
-  console.log(musicianData);
 
-  let url = "http://localhost:5000/musicians";
+  let url = "http://localhost:5000/musicians/";
 
   if (method === "PATCH") {
-    url = "http://localhost:5000/musicians/" + musicianId;
+    url = url + musicianId;
   }
 
   const response = await fetch(url, {
@@ -29,13 +28,12 @@ export async function action({ request, params }) {
     },
     body: JSON.stringify(musicianData),
   });
-  console.log(response);
 
   if (response.status === 422) {
     return response;
   }
 
-  if (!response) {
+  if (!response.ok) {
     throw json({ message: "Counld not save musician" }, { status: 500 });
   }
   return redirect("..");

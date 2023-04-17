@@ -10,15 +10,16 @@ import classes from "./pages.module.css";
 
 export default function HomePage() {
   const token = useRouteLoaderData("root");
-  const data = useLoaderData();
-  const bands = data.bands;
+  const bands = useLoaderData();
+  console.log(bands);
+  // const bands = data.bands;
 
   return (
     <>
       <h1>BandsApp v2.0</h1>
       {token && (
         <header className={classes.header}>
-          <NavLink className={classes.a} to="/band/new">
+          <NavLink className={classes.a} to="/bands/new">
             Add Band
           </NavLink>
         </header>
@@ -29,7 +30,7 @@ export default function HomePage() {
 }
 
 export async function loader() {
-  const response = await fetch("http://localhost:5000/");
+  const response = await fetch("http://localhost:5000/bands");
 
   if (!response.ok) {
     throw json(

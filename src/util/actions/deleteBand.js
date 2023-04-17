@@ -11,7 +11,7 @@ export async function deleteBandAction({ params, request }) {
   console.log("params => ", params);
   console.log("method => ", params.method);
 
-  const response = await fetch("http://localhost:5000/band/" + bandId, {
+  const response = await fetch("http://localhost:5000/bands/" + bandId, {
     method: method,
     headers: {
       "Content-type": "application/json",

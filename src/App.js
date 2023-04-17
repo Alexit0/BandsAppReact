@@ -1,23 +1,21 @@
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage, { loader as bandsLoader } from "./pages/Home";
-import BandPage, { loader as bandDetailsLoader } from "./pages/Band";
+import MusiciansRootLayout from "./pages/MusiciansRoot";
+import EditMusicianPage from "./pages/EditMusician";
+import NewMusicianPage from "./pages/NewMusician";
 import RootLayout from "./pages/Root";
 import ErrorPage from "./pages/Error";
 import EditBandPage from "./pages/EditBand";
 import NewBandPage from "./pages/NewBand";
 import BandsRootLayout from "./pages/BandsRoot";
-import AuthenticationPage, {
-  action as authAction,
-} from "./pages/Authentication";
+import HomePage, { loader as bandsLoader } from "./pages/Home";
+import BandPage, { loader as bandDetailsLoader } from "./pages/Band";
+import AuthenticationPage, { action as authAction} from "./pages/Authentication";
 import { action as logoutAction } from "./pages/Logout";
 import { checkAuthLoader, tokenLoader } from "./util/auth";
 import AboutPage from "./pages/About";
 import MusiciansPage, { loader as musiciansLoader } from "./pages/Musicians";
 import MusicianPage, { loader as musicianDetailLoader } from "./pages/Musician";
-import MusiciansRootLayout from "./pages/MusiciansRoot";
-import EditMusicianPage from "./pages/EditMusician";
-import NewMusicianPage from "./pages/NewMusician";
 
 import { action as manipulateMusicianAction } from "./util/actions/manipulateMusicianAction";
 import { action as manipulatateBandAction } from "./util/actions/manipulateBandAction";
@@ -40,12 +38,12 @@ const router = createBrowserRouter([
         loader: bandsLoader,
       },
       {
-        path: "band",
+        path: "bands",
         id: "band-basic-info",
         loader: bandsLoader,
         children: [
           {
-            id: "band-details",
+            id: "lineup",
             path: ":bandId",
             loader: bandDetailsLoader,
             action: deleteBandAction,

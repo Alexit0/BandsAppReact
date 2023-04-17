@@ -5,22 +5,23 @@ import LineupForm from "../components/LineupForm";
 export default function BandPage() {
   const params = useParams();
   const basicData = useRouteLoaderData("band-basic-info");
-  const data = useRouteLoaderData("band-details");
+  const data = useRouteLoaderData("lineup");
   const token = useRouteLoaderData("root");
 
   const bandId = params.bandId;
-  const selectedBand = basicData.bands.filter((obj) => obj.id === +bandId);
+  const selectedBand = basicData.filter((obj) => obj.id === +bandId);
 
   function getFullName(item) {
-    return [item.First_Name, item.Last_Name].join(" ");
+    return [item.musician.first_name, item.musician.last_name].join(" ");
   }
 
   const lineUp = data.map((item) => ({
-    musicianId: item.Musician_Id,
+    musicianId: +item.musician.id,
     musicianName: getFullName(item),
-    instrumentId: item.Instrument_Id,
-    instrumentName: item.Instrument,
+    instrumentId: +item.instrument.id,
+    instrumentName: item.instrument.name,
   }));
+  console.log("lineUp => ", lineUp);
 
   const newLineUp = Object.values(
     lineUp.reduce((acc, cur) => {
@@ -32,9 +33,7 @@ export default function BandPage() {
     }, {})
   );
 
-  // console.log("lineUp => ", lineUp);
-  // console.log("bandId => ", bandId);
-  // console.log("selectedBand => ", selectedBand);
+  console.log("newLineUp => ", newLineUp);
 
   return (
     <>
@@ -50,9 +49,10 @@ export default function BandPage() {
   );
 }
 
-export async function loader({ request, params }) {
+export async function loader({ params }) {
   const bandId = params.bandId;
 
-  const response = await fetch("http://localhost:5000/band/" + bandId);
+  // lineup endpoint
+  const response = await fetch("http://localhost:5000/lineup/" + bandId);
   return response;
 }

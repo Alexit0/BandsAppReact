@@ -4,15 +4,12 @@ import classes from "./SecondaryNavigation.module.css";
 const BandNavigation = () => {
   const params = useParams();
   const submit = useSubmit();
-  
-
-  const bandId = params.bandId;
 
   function startDeleteHandler() {
     const proceed = window.confirm("Are you sure?");
 
     if (proceed) {
-      submit(null, { method: "delete"});
+      submit(null, { method: "delete" });
     }
   }
 
@@ -22,7 +19,7 @@ const BandNavigation = () => {
         <ul className={classes.list}>
           <li>
             <NavLink
-              to={`/band/${bandId}/edit`}
+              to={"edit"}
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }

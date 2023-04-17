@@ -43,7 +43,7 @@ const MainNavigation = () => {
           {token && (
             <li>
               <NavLink
-                to="/band/new"
+                to="/bands/new"
                 className={({ isActive }) =>
                   isActive ? classes.active : undefined
                 }
