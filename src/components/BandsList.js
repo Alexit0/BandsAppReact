@@ -22,6 +22,7 @@ const BandsList = ({ bands }) => {
               name={band.name}
               year={band.year_formed}
               country={band.country_of_origin}
+              bandImage={band.image}
             />
           </li>
         ))}

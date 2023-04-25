@@ -10,8 +10,9 @@
     /* border: solid 4px; */
     display: flex;
     justify-content: center;
-    max-width: 440px;
+    max-width: 480px;
     margin: auto;
+    font-size: 14px;
 }
 
 .main button {
@@ -54,15 +55,26 @@
     /* border: solid 1px; */
     display: block;
     text-align: left;
-    margin: 2px;
-    width: 75%
+    margin: 3px;
+    width: 60%
+
+
 }
 
 .section-2 {
     /* border: solid 1px; */
     display: block;
     text-align: left;
-    margin: 2px;
+    margin: 3px;
+
+}
+
+.section-3 {
+    /* border: solid 1px; */
+    display: block;
+    text-align: left;
+    margin: 3px;
+    width: 12%
 }
 
 
@@ -70,23 +82,40 @@
 .section-2 input,
 .section-1 select,
 .section-2 select,
+.section-3 select,
 .section-1 select option,
-.section-2 select option {
+.section-2 select option,
+.section-3 select option {
     border: none;
     border-radius: 4px;
     font: inherit;
     padding: .18rem;
     text-align: left;
+    margin: auto;
     background-color: var(--color-gray-200);
     min-width: 100%;
 }
 
 .section-1 label,
-.section-2 label {
+.section-2 label,
+.section-3 label {
     max-width: 100%;
     font-size: 14px;
 
 }
+
+.section-3 input{
+    max-width: 100%;
+    border: none;
+    border-radius: 4px;
+    padding: .18rem;
+    text-align: left;
+    margin: auto;
+    background-color: var(--color-gray-200);
+
+}
+
+
 
 .section-button {
     /* border: solid 1px; */

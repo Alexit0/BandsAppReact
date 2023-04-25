@@ -13,6 +13,8 @@ const Modal = (props) => {
       <div className={classes.backdrop} />
       <div className={classes.modal}>
         <h2>{props.content[1]}</h2>
+        {props.content[4] && <img src={props.content[4]} width={200} alt=""/>}
+
         <h3>{props.content[3]}</h3>
         <p> Originated in {props.content[2]}</p>
         <div className={classes.content}></div>

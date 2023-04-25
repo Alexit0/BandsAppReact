@@ -1,12 +1,21 @@
 const lineupReducer = (state, action) => {
   if (action.type === "GET_MUSICIANS") {
     return action.musician.map(
-      ({ musicianId, musicianName, instrumentId, instrumentName }) => {
+      ({
+        musicianId,
+        musicianName,
+        instrumentId,
+        instrumentName,
+        startsPlaying,
+        quitBand,
+      }) => {
         return {
           musicianId: +musicianId,
           musicianName: musicianName,
           instrumentId: +instrumentId,
           instrumentName: instrumentName,
+          startsPlaying: +startsPlaying,
+          quitBand: +quitBand,
         };
       }
     );
@@ -20,17 +29,21 @@ const lineupReducer = (state, action) => {
         musicianName: "",
         instrumentId: "",
         instrumentName: "",
+        startsPlaying: "",
+        quitBand: "",
       },
     ];
   }
 
   if (action.type === "UPDATE_POSITION") {
     const { name, value } = action.payload.event.target;
+    console.log(action.payload.event.target);
 
     const musicianId =
       +action.payload.event.target[
         action.payload.event.target.selectedIndex
       ].getAttribute("musician-id");
+
     const instrumentId =
       +action.payload.event.target[
         action.payload.event.target.selectedIndex
@@ -47,6 +60,19 @@ const lineupReducer = (state, action) => {
     }
 
     list[action.payload.index][name] = value;
+
+    return list;
+  }
+
+  if (action.type === "UPDATE_YEARS") {
+    const { name, value } = action.payload.event.target;
+    console.log(action.payload.event.target);
+    console.log('name', name, 'value',value);
+
+
+    const list = [...state];
+    list[action.payload.index][name] = +value;
+    console.log('LIST =>', list)
 
     return list;
   }

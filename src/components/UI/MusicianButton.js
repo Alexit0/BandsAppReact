@@ -15,7 +15,7 @@ const MusicianButton = ({ musician }) => {
         onMouseLeave={onMouseLeaveHandler}
       >
         {`${musician.first_name} ${musician.last_name} `}
-        {hoveredOn && `(${musician.yob})`}
+        {hoveredOn && musician.yob !== 0 && `(${musician.yob})`}
       </button>
     </NavLink>
   );

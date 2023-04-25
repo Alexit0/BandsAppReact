@@ -47,7 +47,7 @@ const MusicianForm = ({ musicianInfo, method }) => {
           max="2099"
           step="1"
           name="yob"
-          required
+          // required
           defaultValue={musicianInfo ? musicianInfo.yob : ""}
         />
       </p>

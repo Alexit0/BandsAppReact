@@ -58,7 +58,10 @@ const LineupForm = ({ musiciansList }) => {
 
   const handleChangePosition = (event, index) => {
     dispatch({ type: "UPDATE_POSITION", payload: { event, index } });
-    console.log("lineUpData =>", lineUpData);
+  };
+
+  const handeChangeYears = (event, index) => {
+    dispatch({ type: "UPDATE_YEARS", payload: { event, index } });
   };
 
   const handleCancel = () => {
@@ -76,13 +79,17 @@ const LineupForm = ({ musiciansList }) => {
       return;
     }
     const bandId = params.bandId;
-    const newData = lineUpData.map(({ musicianId, instrumentId }) => {
-      return {
-        bandId: +bandId,
-        musicianId: +musicianId,
-        instrumentId: +instrumentId,
-      };
-    });
+    const newData = lineUpData.map(
+      ({ musicianId, instrumentId, startsPlaying, quitBand }) => {
+        return {
+          bandId: +bandId,
+          musicianId: +musicianId,
+          instrumentId: +instrumentId,
+          startsPlaying: +startsPlaying,
+          quitBand: +quitBand,
+        };
+      }
+    );
 
     await fetch(`http://localhost:5000/lineup/${params.bandId}`, {
       method: "PATCH",
@@ -94,6 +101,7 @@ const LineupForm = ({ musiciansList }) => {
     });
     setEditIsActive(false);
     navigateHandler();
+    console.log("newDATA =>", newData);
   };
 
   return (
@@ -158,6 +166,34 @@ const LineupForm = ({ musiciansList }) => {
                             );
                           })}
                       </select>
+                    </div>
+                    <div className={classes["section-3"]}>
+                      <label>from</label>
+                      <input
+                        type="number"
+                        name="startsPlaying"
+                        min="1900"
+                        max="2099"
+                        step="1"
+                        defaultValue={
+                          position.startsPlaying ? position.startsPlaying : ""
+                        }
+                        onChange={(event) => handeChangeYears(event, index)}
+                      />
+                    </div>
+                    <div className={classes["section-3"]}>
+                      <label>to</label>
+                      <input
+                        type="number"
+                        name="quitBand"
+                        min="1900"
+                        max="2099"
+                        step="1"
+                        defaultValue={
+                          position.quitBand ? position.quitBand : ""
+                        }
+                        onChange={(event) => handeChangeYears(event, index)}
+                      />
                     </div>
                     <div className={classes["section-button"]}>
                       <button
